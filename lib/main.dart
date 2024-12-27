@@ -7,7 +7,13 @@ import 'package:hexham_pint/pages/menu.dart';
 import 'package:hexham_pint/pages/openigHours.dart';
 import 'package:hexham_pint/pages/table_booking.dart';
 import 'package:hexham_pint/utils/colors.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

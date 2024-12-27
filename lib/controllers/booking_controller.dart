@@ -36,7 +36,7 @@ class BookingController extends GetxController {
 
       final Uri mailUrl = Uri(
         scheme: 'mailto',
-        path: 'clearbusinessbyadrian@gmail.com', // Replace with the owner's email
+        path: 'nomigjr990@gmail.com', // Replace with the owner's email
         query: 'subject=${Uri.encodeComponent("Table Booking Details")}&body=${Uri.encodeComponent(emailBody)}',
       );
 

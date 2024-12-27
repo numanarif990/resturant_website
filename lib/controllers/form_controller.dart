@@ -19,7 +19,7 @@ class FormController extends GetxController {
 
       final mailUrl = Uri(
         scheme: 'mailto',
-        path: 'clearbusinessbyadrian@gmail.com', // Replace with the owner's email
+        path: 'nomigjr990@gmail.com', // Replace with the owner's email
         query: 'subject=Message from $name&body=$message%0A%0APhone: $phone%0AEmail: $email',
       );
 
