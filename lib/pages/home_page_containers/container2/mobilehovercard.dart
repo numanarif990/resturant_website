@@ -46,10 +46,10 @@ class MobileHoverCard extends StatelessWidget {
         ),
         Positioned(
           top: -size.height * 0.18, // Adjust based on screen height
-          left: cardWidth * 0.120, // Center horizontally relative to card
+          left: cardWidth * 0.13, // Center horizontally relative to card
           child: Container(
-            height: cardHeight * 0.8, // Adjust size of the circular image
-            width: cardWidth * 0.8,
+            height: cardHeight * 0.7, // Adjust size of the circular image
+            width: cardWidth * 0.7,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
