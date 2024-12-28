@@ -17,8 +17,8 @@ class MobileHoverCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double cardWidth = size.width * 0.65; // 70% of screen width
-    double cardHeight = size.height * 0.35; // 40% of screen height
+    double cardWidth = size.width * 0.66; // 70% of screen width
+    double cardHeight = size.width<390 && size.width>350? size.height * 0.45: size.height * 0.35; // 40% of screen height
 
     return Stack(
       clipBehavior: Clip.none,
