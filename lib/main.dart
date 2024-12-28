@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hexham_pint/customScrollbehaviour.dart';
 import 'package:hexham_pint/pages/aboutus.dart';
 import 'package:hexham_pint/pages/contactus.dart';
 import 'package:hexham_pint/pages/homepage.dart';
@@ -23,9 +24,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    double speedFactor = MediaQuery.of(context).size.width < 600 ? 2.0 : 5.0;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Hexham Pint",
+      scrollBehavior: CustomScrollBehavior(speedFactor: speedFactor),
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'David Libre',
