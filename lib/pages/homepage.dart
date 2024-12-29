@@ -14,7 +14,7 @@ class Homepage extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Obx(() {
           if (controller.widgets.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(color: Colors.blue,));
           }
 
           return ListView.builder(
@@ -24,7 +24,7 @@ class Homepage extends StatelessWidget {
               if (index < controller.widgets.length) {
                 return controller.widgets[index];
               } else {
-                return const Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator(color: Colors.blue,));
               }
             },
           );
