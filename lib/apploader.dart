@@ -22,7 +22,7 @@ class _AppLoaderState extends State<AppLoader> {
   Future<void> _initializeApp() async {
     try {
       // Wait for the splash screen for 2 seconds
-      await Future.delayed(const Duration(seconds: 5));
+      await Future.delayed(const Duration(seconds: 3));
       // Preload assets after 2 seconds
       _preloadAssetsInBackground();
     } catch (e) {
