@@ -23,7 +23,7 @@ class HomepageController extends GetxController {
   }
 
   Future<void> _loadInitialData() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 30));
     widgets.addAll([
       const Navbar(),
       const Container1(),
@@ -48,7 +48,7 @@ class HomepageController extends GetxController {
     isLoadingMore.value = true;
 
     // Simulate loading additional data
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 30));
 
     isLoadingMore.value = false;
     allDataLoaded.value = true; // Assuming no more data to load

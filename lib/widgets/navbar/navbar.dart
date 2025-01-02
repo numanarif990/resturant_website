@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexham_pint/widgets/navbar/desktopnavbar.dart';
 import 'package:hexham_pint/widgets/navbar/mobilenavbar.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../controllers/drawer_controller.dart';
 import '../../responsiveLayout.dart';

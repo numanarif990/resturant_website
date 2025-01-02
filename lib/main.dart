@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hexham_pint/apploader.dart';
 import 'package:hexham_pint/customScrollbehaviour.dart';
 import 'package:hexham_pint/pages/aboutus.dart';
 import 'package:hexham_pint/pages/contactus.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       defaultTransition: Transition.leftToRightWithFade,
       transitionDuration: const Duration(milliseconds: 500),
-      home: const Homepage(),
+      home: const AppLoader(),
       getPages: [
         GetPage(name: '/', page: ()=> const Homepage()),
         GetPage(name: "/aboutus", page: ()=> const Aboutus()),
