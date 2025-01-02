@@ -15,22 +15,29 @@ class _AppLoaderState extends State<AppLoader> {
   @override
   void initState() {
     super.initState();
+    // Initialize future for future builder
     initializationFuture = _initializeApp();
   }
 
   Future<void> _initializeApp() async {
-    await Future.delayed(const Duration(milliseconds: 100)); // Ensure splash screen renders
     try {
-      await _precacheAssets();
+      // Wait for the splash screen for 2 seconds
+      await Future.delayed(const Duration(seconds: 5));
+      // Preload assets after 2 seconds
+      _preloadAssetsInBackground();
     } catch (e) {
       debugPrint("Error during initialization: $e");
-    } finally {
-      // Ensure a minimum splash duration of 2 seconds
-      await Future.delayed(const Duration(seconds: 2));
     }
   }
 
-  Future<void> _precacheAssets() async {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // You can safely access inherited widgets like MediaQuery here
+    debugPrint("Dependencies changed, MediaQuery or other inherited widgets can be accessed");
+  }
+
+  Future<void> _preloadAssetsInBackground() async {
     List<String> imagePaths = [
       "assets/images/logo.png",
       "assets/images/home_images/img.png",
@@ -45,10 +52,11 @@ class _AppLoaderState extends State<AppLoader> {
 
     for (String path in imagePaths) {
       debugPrint("Preloading: $path");
+      // Preload the images
       await precacheImage(AssetImage(path), context);
     }
 
-    debugPrint("All assets preloaded");
+    debugPrint("All assets preloaded in background");
   }
 
   @override
@@ -56,9 +64,11 @@ class _AppLoaderState extends State<AppLoader> {
     return FutureBuilder(
       future: initializationFuture,
       builder: (context, snapshot) {
+        // If initialization is done, show homepage
         if (snapshot.connectionState == ConnectionState.done) {
           return const Homepage();
         } else {
+          // Show splash screen while loading
           return const SplashScreen();
         }
       },
