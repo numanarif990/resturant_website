@@ -64,7 +64,7 @@ class NavigationDrawer1 extends StatelessWidget {
                 NavigationDrawer1.hide(context);
                 drawerController.toggleDrawer();
                 Future.delayed(const Duration(milliseconds: 300), () { // Add a small delay
-                  Get.toNamed('/'); // Then navigate to the desired page
+                  Get.toNamed('/homepage'); // Then navigate to the desired page
                 });
               },
             ),

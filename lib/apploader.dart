@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hexham_pint/pages/homepage.dart';
 import 'package:hexham_pint/splashscreen.dart';
+
+import 'firebase_options.dart';
 
 class AppLoader extends StatefulWidget {
   const AppLoader({super.key});
@@ -15,26 +19,19 @@ class _AppLoaderState extends State<AppLoader> {
   @override
   void initState() {
     super.initState();
-    // Initialize future for future builder
     initializationFuture = _initializeApp();
   }
 
   Future<void> _initializeApp() async {
     try {
-      // Wait for the splash screen for 2 seconds
-      await Future.delayed(const Duration(seconds: 3));
-      // Preload assets after 2 seconds
-      _preloadAssetsInBackground();
+      // Start Firebase initialization and preload assets concurrently
+      await Future.wait([
+        Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
+        Future.delayed(const Duration(seconds: 3), _preloadAssetsInBackground),
+      ]);
     } catch (e) {
       debugPrint("Error during initialization: $e");
     }
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // You can safely access inherited widgets like MediaQuery here
-    debugPrint("Dependencies changed, MediaQuery or other inherited widgets can be accessed");
   }
 
   Future<void> _preloadAssetsInBackground() async {
@@ -47,12 +44,11 @@ class _AppLoaderState extends State<AppLoader> {
       "assets/images/hover_card_images/img_2.png",
       "assets/images/hover_card_images/img_3.png",
       "assets/images/container3/img.png",
-      "assets/images/container4/img.png"
+      "assets/images/container4/img.png",
     ];
 
     for (String path in imagePaths) {
       debugPrint("Preloading: $path");
-      // Preload the images
       await precacheImage(AssetImage(path), context);
     }
 
@@ -64,11 +60,9 @@ class _AppLoaderState extends State<AppLoader> {
     return FutureBuilder(
       future: initializationFuture,
       builder: (context, snapshot) {
-        // If initialization is done, show homepage
         if (snapshot.connectionState == ConnectionState.done) {
           return const Homepage();
         } else {
-          // Show splash screen while loading
           return const SplashScreen();
         }
       },

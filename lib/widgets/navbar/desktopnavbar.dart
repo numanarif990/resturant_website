@@ -36,7 +36,7 @@ class DesktopNavBar extends StatelessWidget {
                   color: Colors.black, // Fixed nav button color
                   width: 35,
                   onTap: () {
-                    Get.toNamed('/');
+                    Get.toNamed('/homepage');
                   },
                 ),
                 NavButton(
